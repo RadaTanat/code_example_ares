@@ -1,0 +1,31 @@
+{block content}
+	<div>
+		<h1 n:block="title">Výpis firem</h1>
+	</div>
+	<table class="column table table-condensed table-hover table-striped ui-corner-all">
+			<thead>
+				<tr>
+					<th style="text-align: center;">Název firmy:</th>
+					<th style="text-align: center;">Adresa sídla:</th>
+					<th style="text-align: center;">IČO:</th>
+					<th style="text-align: center;">DIČ:</th>
+					<th style="text-align: center;">Jméno statutárního zástupce:</th>
+					<th style="text-align: center;">E-mail statutárního zástupce:</th>
+				</tr>
+			</thead>
+			<tr>
+				<tbody>
+					{foreach $corporations as $corporation}
+						<tr style="background-color:#ff9900; font-weight: bold; color:white;">
+							<td class="corp_td">{$corporation->name}</td>
+							<td class="corp_td">{$corporation->address}</td>
+							<td class="corp_td">{$corporation->ico}</td>
+							<td class="corp_td">{$corporation->dic}</td>
+							<td class="corp_td">{$corporation->statutory_name}</td>
+							<td class="corp_td"><a href="mailto:{$corporation->statutory_email}" n:tag-if="$corporation->statutory_email">{$corporation->statutory_email}</a></td>
+						</tr>
+					{/foreach}
+				</tbody>
+	</table>
+	<a n:href="Registrationico:">Registrace firmy dle IČO</a>
+{/block}

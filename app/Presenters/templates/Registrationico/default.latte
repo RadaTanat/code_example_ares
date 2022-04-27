@@ -1,0 +1,75 @@
+{block navig}
+	<li class="main_menu"><a n:href="Corporations:">Seznam firem</a></li>
+{/block}
+
+{block content}
+
+<h1>Registrace firmy dle IČO</h1>
+
+{snippetArea formArea}
+	{form registrationicoForm}
+		<table>
+			<tr>
+				<th>{label ico}</th>
+				<td>{input ico}</td>
+				<td>{snippet s_error}{if isset($error_msg)}{$error_msg}{/if}{/snippet}</td>
+			</tr>
+				<tr>
+					<th>{label name}</th>
+					<td>{snippet s_name}{var $form = $control['registrationicoForm']}{input $form->getComponent('name')}{/snippet}</td>
+				</tr>
+				<tr>
+					<th>{label address}</th>
+					<td>{snippet s_address}{var $form = $control['registrationicoForm']}{input $form->getComponent('address')}</td>{/snippet}
+				</tr>
+				<tr>
+					<th>{label dic}</th>
+					<td>{snippet s_dic}{var $form = $control['registrationicoForm']}{input $form->getComponent('dic')}{/snippet}</td>
+				</tr>
+				<tr>
+					<th>{label statutory_name}</th>
+					<td>{snippet s_statutory_name}{var $form = $control['registrationicoForm']}{input $form->getComponent('statutory_name')}{/snippet}</td>
+				</tr>
+				<tr>
+					<th>{label statutory_email}</th>
+					<td>{snippet s_statutory_email}{var $form = $control['registrationicoForm']}{input $form->getComponent('statutory_email')}{/snippet}</td>
+				</tr>
+
+				<tr>
+					<th></th>
+					<td>{input send}</td>
+				</tr>
+		</table>
+	{/form}
+{/snippetArea}
+
+<script src="{$basePath}/lib/jquery/jquery.js"></script>
+<script type="text/javascript" src="{$basePath}/js/nette.ajax.js"></script>
+
+
+<script type="text/javascript">
+	jQuery(function ($) {
+		$.nette.init();
+		
+		$('#frm-registrationicoForm-ico').focus().keyup(function(event) {
+			var ico = $('#frm-registrationicoForm-ico').val();
+			
+			if(ico.length != 8){
+				return;
+			}
+			
+			ico = parseInt(ico);
+
+			if(!Number.isInteger(ico)){
+				alert('IČO není číslo!');
+				return;
+			}
+			
+			$.nette.ajax({
+				'type': "GET",
+				'url': {link getData!},
+				'data': { 'ico': ico }
+			});
+		});
+	});
+</script>

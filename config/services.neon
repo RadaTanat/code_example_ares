@@ -1,0 +1,6 @@
+services:
+	- App\Router\RouterFactory::createRouter
+	- App\Forms\FormFactory
+	- App\Forms\RegistrationFormFactory
+	- App\Forms\RegistrationicoFormFactory
+	- App\Model\CorpFacade

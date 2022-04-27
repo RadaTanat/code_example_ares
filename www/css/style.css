@@ -1,0 +1,61 @@
+body {
+	font: 16px/1.5 Verdana;
+	margin: 0 auto;
+	width: 1170px;
+	color: #333;
+	background-color: #d9ebfc;
+}
+
+div.flash {
+	color: black;
+	background: #FFF9D7;
+	border: 1px solid #E2C822;
+	padding: 1em;
+	margin: 1em 0;
+}
+
+a[href^="#error:"] {
+	background: red;
+	color: white;
+}
+
+form th, form td {
+	vertical-align: top;
+	font-weight: normal;
+}
+
+form th {
+	text-align: right;
+}
+
+form .required label {
+	font-weight: bold;
+}
+
+form .error {
+	color: #D00;
+	font-weight: bold;
+}
+
+.main_menu {
+	float: left;
+	margin: 15px;
+}
+
+.corp_td {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.date {
+	font-size: 11pt;
+	font-style: italic;
+}
+
+.readonly_input {
+	background: rgb(216, 216, 216);
+}
+
+.writeable_input {
+	background: white;
+}
